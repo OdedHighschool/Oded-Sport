@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Romania.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>עודד פיטנס</title>
+    <link href="css/nav%20clock%20and%20body.css" rel="stylesheet" />
+    <link href="css/register&login.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <div class="topnav">
+    <h1>עודד פיטנס</h1>
+    </div>
+    <nav>
+        <a href="אימונים.aspx">אימונים</a>
+        <a href="הרשמה.aspx">הרשמה</a>
+        <a href="התחברות.aspx">התחברות</a>
+        <a href="ספורטאים.aspx">ספורטאים</a>
+        <a href="ראשי.aspx">ראשי</a>
+        <a href="תזונה.aspx">תזונה</a>
+         <div class="clock" id="MyClockDisplay"onload="showTime()" style="text-align:left">
+        
+      
+00:00:00
+ <script>
+     function showTime() {
+         var date = new Date();
+         var h = date.getHours();
+         var m = date.getMinutes();
+         var s = date.getSeconds();
+         var session = "AM";
+
+         if (h == 0) {
+             h = 12;
+         }
+
+         if (h > 12) {
+             h = h - 12;
+             session = "PM";
+         }
+
+         h = (h < 10) ? "0" + h : h;
+         m = (m < 10) ? "0" + m : m;
+         s = (s < 10) ? "0" + s : s;
+
+         var time = h + ":" + m + ":" + s + " " + session;
+         document.getElementById("MyClockDisplay").innerText = time;
+         document.getElementById("MyClockDisplay").textContent = time;
+
+         setTimeout(showTime, 1000);
+
+     }
+
+     showTime();
+ </script>
+
+     </div>
+    </nav>
+
+   
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+</body>
+</html>
+
